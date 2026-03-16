@@ -1,9 +1,9 @@
-﻿"use client"
+"use client"
 
 import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import type { LucideIcon } from "lucide-react"
-import { Activity, Target, Sparkles, Layers, Waveform, Shield } from "lucide-react"
+import { Activity, Target, Sparkles, Layers, Waves, Shield } from "lucide-react"
 
 const containerVariants = {
   hidden: {},
@@ -115,7 +115,7 @@ const featureCards: {
   {
     title: "Live Signals",
     description: "Stream overlays score each move in real-time so you never miss an opportunity during commentary.",
-    icon: Waveform,
+    icon: Waves,
     accent: "#c1a7ff",
     tags: ["Broadcast ready", "< 300ms latency"],
   },
