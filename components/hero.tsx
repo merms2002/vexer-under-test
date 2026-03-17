@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const textRevealVariants = {
   hidden: { y: "100%" },
@@ -89,16 +90,19 @@ export function Hero() {
             className="space-y-6"
           >
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full px-8 h-14 font-semibold shadow-xl shadow-[#ffc75c]/30">
-                Analyze a Game
-                <ArrowRight className="ml-2 w-5 h-5" />
+              <Button size="lg" className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full px-8 h-14 font-semibold shadow-xl shadow-[#ffc75c]/30" asChild>
+                <Link href="/auth/sign-up">
+                  Analyze a Game
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="rounded-full px-8 h-14 text-sm sm:text-base font-semibold border border-white/20 text-white/80 hover:border-[#57f4ff] hover:text-[#57f4ff]"
+                asChild
               >
-                Preview the dashboard
+                <Link href="/dashboard">Preview the dashboard</Link>
               </Button>
             </div>
 
