@@ -4,6 +4,7 @@ import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const navItems = [
   { label: "Analysis", href: "#analysis" },
@@ -61,11 +62,11 @@ export function Navbar() {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="text-zinc-300 hover:text-white hover:bg-zinc-800">
-            Log In
+          <Button variant="ghost" size="sm" className="text-zinc-300 hover:text-white hover:bg-zinc-800" asChild>
+            <Link href="/auth/login">Log In</Link>
           </Button>
-          <Button size="sm" className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full px-5">
-            Try Vexer
+          <Button size="sm" className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full px-5" asChild>
+            <Link href="/auth/sign-up">Try Vexer</Link>
           </Button>
         </div>
 
@@ -99,10 +100,12 @@ export function Navbar() {
               </a>
             ))}
             <hr className="border-zinc-800 my-2" />
-            <Button variant="ghost" className="justify-start text-zinc-200 hover:text-white">
-              Log In
+            <Button variant="ghost" className="justify-start text-zinc-200 hover:text-white" asChild>
+              <Link href="/auth/login">Log In</Link>
             </Button>
-            <Button className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full">Try Vexer</Button>
+            <Button className="shimmer-btn bg-white text-[#0b0703] hover:bg-zinc-100 rounded-full" asChild>
+              <Link href="/auth/sign-up">Try Vexer</Link>
+            </Button>
           </div>
         </motion.div>
       )}
