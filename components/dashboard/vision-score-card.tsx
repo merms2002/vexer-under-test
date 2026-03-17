@@ -28,18 +28,39 @@ export function VisionScoreCard() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3 mt-4 sm:mt-6">
+          {/* Animated Analyze Button */}
           <motion.button 
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-white text-black rounded-full text-xs sm:text-sm font-medium hover:bg-white/90 transition-colors"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="group relative flex items-center gap-1.5 sm:gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold overflow-hidden"
           >
-            <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
-            Analyze
+            {/* Base background */}
+            <div className="absolute inset-0 bg-white rounded-full" />
+            
+            {/* Animated shimmer sweep */}
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+            </div>
+            
+            {/* Glow effect on hover */}
+            <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_20px_rgba(255,255,255,0.5),0_0_40px_rgba(255,255,255,0.3)]" />
+            
+            {/* Button content */}
+            <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 text-black">
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
+              >
+                <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </motion.span>
+              Analyze
+            </span>
           </motion.button>
+
           <motion.button 
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
             whileTap={{ scale: 0.98 }}
-            className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/[0.05] border border-white/10 text-white/80 rounded-full text-xs sm:text-sm font-medium hover:bg-white/[0.08] transition-colors"
+            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-white/[0.05] border border-white/10 text-white/80 rounded-full text-xs sm:text-sm font-medium transition-colors"
           >
             History
           </motion.button>
