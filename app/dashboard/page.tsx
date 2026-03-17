@@ -20,58 +20,62 @@ export default async function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "Commander"
 
   return (
-    <div className="min-h-screen bg-[#000000] p-6">
+    <div className="min-h-screen bg-[#000000] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
       {/* Floating Navbar */}
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <FloatingNavbar />
       </div>
 
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
-        <p className="text-white/40 mt-1">Welcome back, {displayName}</p>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">My Dashboard</h1>
+        <p className="text-white/40 mt-1 text-sm sm:text-base">Welcome back, {displayName}</p>
       </div>
 
-      {/* Bento Grid Layout */}
-      <div className="grid grid-cols-12 gap-4">
+      {/* Bento Grid Layout - Fully Responsive */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5">
+        
         {/* Row 1 */}
-        {/* Vision Score - Hero Card (spans 5 cols) */}
-        <div className="col-span-12 lg:col-span-5 h-[220px]">
+        {/* Vision Score - Hero Card */}
+        <div className="sm:col-span-2 lg:col-span-5 min-h-[200px] sm:min-h-[220px]">
           <VisionScoreCard />
         </div>
 
-        {/* Stat Cards - 2 stacked (spans 3 cols) */}
-        <div className="col-span-6 lg:col-span-3 h-[220px]">
+        {/* Stat Cards - 2 stacked */}
+        <div className="sm:col-span-1 lg:col-span-3 min-h-[200px] sm:min-h-[220px]">
           <StatCards />
         </div>
 
-        {/* Opening Cards - 3D Stack (spans 4 cols) */}
-        <div className="col-span-6 lg:col-span-4 h-[220px]">
+        {/* Opening Cards - Folder Style */}
+        <div className="sm:col-span-1 lg:col-span-4 min-h-[200px] sm:min-h-[220px]">
           <OpeningCards />
         </div>
 
         {/* Row 2 */}
-        {/* Match Volume Bar Chart (spans 4 cols) */}
-        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[280px]">
+        {/* Match Volume Bar Chart */}
+        <div className="sm:col-span-1 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
           <MatchVolumeChart />
         </div>
 
-        {/* Outcome Split Donut (spans 4 cols) */}
-        <div className="col-span-6 md:col-span-3 lg:col-span-4 h-[280px]">
+        {/* Outcome Split Donut */}
+        <div className="sm:col-span-1 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
           <OutcomeSplitChart />
         </div>
 
-        {/* Nexus Directives List (spans 4 cols) */}
-        <div className="col-span-6 md:col-span-3 lg:col-span-4 h-[280px]">
+        {/* Nexus Directives List */}
+        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
           <NexusDirectives />
         </div>
 
         {/* Row 3 - Full Width */}
-        {/* Recent Clashes Table */}
-        <div className="col-span-12">
+        {/* Recent Clashes - Folder Style */}
+        <div className="sm:col-span-2 lg:col-span-12">
           <RecentClashes />
         </div>
       </div>
+
+      {/* Bottom Spacing for scroll */}
+      <div className="h-8 sm:h-12" />
     </div>
   )
 }

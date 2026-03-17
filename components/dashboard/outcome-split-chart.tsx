@@ -24,25 +24,25 @@ export function OutcomeSplitChart() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.5 }}
-      className="rounded-3xl bg-white/[0.02] border border-white/5 p-5 h-full flex flex-col"
+      className="rounded-3xl bg-white/[0.02] border border-white/5 p-4 sm:p-5 h-full flex flex-col"
     >
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-white font-semibold">Outcome Split</h3>
-        <button className="px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-white/60 text-xs">
+        <h3 className="text-white font-semibold text-sm sm:text-base">Outcome Split</h3>
+        <button className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-white/60 text-xs">
           All
         </button>
       </div>
 
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center min-h-0">
         <div className="relative">
-          <ChartContainer id="outcome-split-chart" config={chartConfig} className="w-[160px] h-[160px]">
+          <ChartContainer id="outcome-split-chart" config={chartConfig} className="w-[120px] h-[120px] sm:w-[140px] sm:h-[140px]">
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={50}
-                outerRadius={70}
+                innerRadius={35}
+                outerRadius={55}
                 paddingAngle={2}
                 dataKey="value"
                 strokeWidth={0}
@@ -55,17 +55,17 @@ export function OutcomeSplitChart() {
           </ChartContainer>
           {/* Center text */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-white/40 text-xs">Total</span>
-            <span className="text-white text-2xl font-bold">{totalGames}</span>
+            <span className="text-white/40 text-[10px] sm:text-xs">Total</span>
+            <span className="text-white text-lg sm:text-xl font-bold">{totalGames}</span>
           </div>
         </div>
       </div>
 
       {/* Legend */}
-      <div className="space-y-2 mt-4 pt-4 border-t border-white/5">
+      <div className="space-y-1.5 sm:space-y-2 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5">
         {data.map((item) => (
           <div key={item.name} className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <div className="w-2 h-2 rounded-full" style={{ background: item.color }} />
               <span className="text-white/50 text-xs">{item.name}</span>
             </div>
