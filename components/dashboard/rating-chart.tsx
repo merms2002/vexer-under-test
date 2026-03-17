@@ -56,7 +56,7 @@ export function RatingChart() {
       </div>
 
       {/* Chart */}
-      <ChartContainer config={chartConfig} className="h-[280px] w-full">
+      <ChartContainer config={chartConfig} className="aspect-[2/1] w-full min-h-[200px]">
           <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="ratingGradient" x1="0" y1="0" x2="0" y2="1">
