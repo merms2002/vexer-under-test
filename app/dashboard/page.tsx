@@ -1,11 +1,13 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import { MicroSidebar } from "@/components/dashboard/micro-sidebar"
-import { ArchiveMenu } from "@/components/dashboard/archive-menu"
-import { ChessboardPlaceholder } from "@/components/dashboard/chessboard-placeholder"
-import { EvalChart } from "@/components/dashboard/eval-chart"
-import { Scorecard } from "@/components/dashboard/scorecard"
-import { NexusTerminal } from "@/components/dashboard/nexus-terminal"
+import { FloatingNavbar } from "@/components/dashboard/floating-navbar"
+import { VisionScoreCard } from "@/components/dashboard/vision-score-card"
+import { StatCards } from "@/components/dashboard/stat-cards"
+import { OpeningCards } from "@/components/dashboard/opening-cards"
+import { MatchVolumeChart } from "@/components/dashboard/match-volume-chart"
+import { OutcomeSplitChart } from "@/components/dashboard/outcome-split-chart"
+import { NexusDirectives } from "@/components/dashboard/nexus-directives"
+import { RecentClashes } from "@/components/dashboard/recent-clashes"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -15,63 +17,61 @@ export default async function DashboardPage() {
     redirect("/auth/login")
   }
 
+  const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "Commander"
+
   return (
-    <>
-      {/* LEFT COLUMN: Micro-Sidebar */}
-      <div className="flex-shrink-0">
-        <MicroSidebar />
+    <div className="min-h-screen bg-[#000000] p-6">
+      {/* Floating Navbar */}
+      <div className="mb-8">
+        <FloatingNavbar />
       </div>
 
-      {/* MIDDLE COLUMN: Archive Menu */}
-      <div className="flex-shrink-0">
-        <ArchiveMenu />
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
+        <p className="text-white/40 mt-1">Welcome back, {displayName}</p>
       </div>
 
-      {/* RIGHT COLUMN: Main Stage */}
-      <div className="flex-1 min-w-0 flex flex-col gap-4">
-        {/* Top Header */}
-        <div className="flex items-baseline justify-between">
-          <div>
-            <h1 className="text-2xl font-semibold text-white">
-              Player vs Magnus_Fan_2024
-            </h1>
-            <p className="font-mono text-white/40 text-sm mt-1">
-              Rapid • Oct 24, 2024 • ELO: 1850
-            </p>
-          </div>
-          <div className="text-right">
-            <p className="text-white/40 text-sm">Result</p>
-            <p className="text-white font-bold text-lg">1 - 0</p>
-          </div>
+      {/* Bento Grid Layout */}
+      <div className="grid grid-cols-12 gap-4">
+        {/* Row 1 */}
+        {/* Vision Score - Hero Card (spans 5 cols) */}
+        <div className="col-span-12 lg:col-span-5 h-[220px]">
+          <VisionScoreCard />
         </div>
 
-        {/* Analysis Grid */}
-        <div className="flex-1 grid grid-cols-2 gap-4 min-h-0">
-          {/* Board Area (Left) */}
-          <div className="flex items-center justify-center">
-            <ChessboardPlaceholder />
-          </div>
+        {/* Stat Cards - 2 stacked (spans 3 cols) */}
+        <div className="col-span-6 lg:col-span-3 h-[220px]">
+          <StatCards />
+        </div>
 
-          {/* Data & AI Area (Right) */}
-          <div className="flex flex-col gap-4 overflow-hidden">
-            {/* Eval Chart */}
-            <div className="bg-black border border-white/10 rounded-xl p-4">
-              <p className="text-white/40 text-xs font-mono uppercase tracking-wider mb-3">
-                Evaluation Over Time
-              </p>
-              <EvalChart />
-            </div>
+        {/* Opening Cards - 3D Stack (spans 4 cols) */}
+        <div className="col-span-6 lg:col-span-4 h-[220px]">
+          <OpeningCards />
+        </div>
 
-            {/* Scorecard */}
-            <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4 flex-1">
-              <Scorecard />
-            </div>
+        {/* Row 2 */}
+        {/* Match Volume Bar Chart (spans 4 cols) */}
+        <div className="col-span-12 md:col-span-6 lg:col-span-4 h-[280px]">
+          <MatchVolumeChart />
+        </div>
 
-            {/* Nexus AI Terminal */}
-            <NexusTerminal />
-          </div>
+        {/* Outcome Split Donut (spans 4 cols) */}
+        <div className="col-span-6 md:col-span-3 lg:col-span-4 h-[280px]">
+          <OutcomeSplitChart />
+        </div>
+
+        {/* Nexus Directives List (spans 4 cols) */}
+        <div className="col-span-6 md:col-span-3 lg:col-span-4 h-[280px]">
+          <NexusDirectives />
+        </div>
+
+        {/* Row 3 - Full Width */}
+        {/* Recent Clashes Table */}
+        <div className="col-span-12">
+          <RecentClashes />
         </div>
       </div>
-    </>
+    </div>
   )
 }

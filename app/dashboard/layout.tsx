@@ -4,18 +4,18 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="flex h-screen w-screen overflow-hidden bg-black text-white p-4 gap-4 font-sans antialiased">
+    <main className="min-h-screen w-full bg-black text-white font-sans antialiased">
       {/* Subtle dot grid overlay */}
       <div 
         className="fixed inset-0 opacity-20 pointer-events-none z-0"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
-          backgroundSize: '20px 20px',
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
         }}
       />
       
       {/* Content */}
-      <div className="relative z-10 flex w-full h-full gap-4">
+      <div className="relative z-10">
         {children}
       </div>
     </main>
