@@ -99,14 +99,8 @@ export default function SettingsPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-[#050505]/80 backdrop-blur-xl border-b border-white/[0.05]">
         <div className="flex items-center gap-4 px-4 py-4">
-          <Link href="/dashboard">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full hover:bg-white/[0.05] transition-colors"
-            >
-              <ChevronLeft className="w-5 h-5 text-white" />
-            </motion.button>
+          <Link href="/dashboard" className="p-2 rounded-full hover:bg-white/[0.05] transition-colors">
+            <ChevronLeft className="w-5 h-5 text-white" />
           </Link>
           <h1 className="text-white text-lg font-semibold tracking-tight">Account</h1>
         </div>
@@ -195,21 +189,20 @@ export default function SettingsPage() {
       <nav className="fixed bottom-0 left-0 right-0 bg-[#0a0a0a]/90 backdrop-blur-xl border-t border-white/[0.05] px-4 py-2 safe-area-pb">
         <div className="flex items-center justify-around max-w-md mx-auto">
           {navItems.map((item) => (
-            <Link key={item.label} href={item.href}>
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                className={`flex flex-col items-center gap-1 py-2 px-4 rounded-xl transition-colors ${
-                  item.active 
-                    ? "text-emerald-400" 
-                    : "text-zinc-500 hover:text-zinc-300"
-                }`}
-                style={item.active ? { 
-                  filter: "drop-shadow(0 0 8px rgba(16, 185, 129, 0.5))" 
-                } : {}}
-              >
-                {item.icon}
-                <span className="text-[10px] font-medium tracking-tight">{item.label}</span>
-              </motion.button>
+            <Link 
+              key={item.label} 
+              href={item.href}
+              className={`flex flex-col items-center gap-1 py-2 px-4 rounded-xl transition-colors ${
+                item.active 
+                  ? "text-emerald-400" 
+                  : "text-zinc-500 hover:text-zinc-300"
+              }`}
+              style={item.active ? { 
+                filter: "drop-shadow(0 0 8px rgba(16, 185, 129, 0.5))" 
+              } : {}}
+            >
+              {item.icon}
+              <span className="text-[10px] font-medium tracking-tight">{item.label}</span>
             </Link>
           ))}
         </div>
