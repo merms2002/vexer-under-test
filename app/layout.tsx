@@ -1,34 +1,27 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/next"
-import { Instrument_Sans, Manrope, Playfair_Display } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
-const manrope = Manrope({
+const geistSans = Geist({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-geist-sans",
   display: "swap",
 })
 
-const calSans = Playfair_Display({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["600"],
-  variable: "--font-cal-sans",
-  display: "swap",
-})
-
-const instrumentSans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-instrument-sans",
+  variable: "--font-geist-mono",
   display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Vexer | Chess Analyzer",
+  title: "VEXER | Stealth Chess Intelligence",
   description:
-    "Vexer turns your games into instant insights with adaptive engine analysis, opening context, and actionable strategy notes.",
+    "Monochromatic chess analysis terminal. Adaptive engine analysis, opening intelligence, and strategic directives.",
   generator: "v0.app",
-  keywords: ["chess", "analysis", "Vexer", "chess analytics", "game review"],
+  keywords: ["chess", "analysis", "VEXER", "chess analytics", "stealth terminal"],
 }
 
 export default function RootLayout({
@@ -38,9 +31,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${manrope.variable} ${calSans.variable} ${instrumentSans.variable} font-sans antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-black text-white`}
+      >
+        {/* Noise Grain Overlay - 5% opacity */}
         <div className="noise-overlay" aria-hidden="true" />
-        {children}
+        {/* Dot-matrix Background */}
+        <div className="dot-matrix" aria-hidden="true" />
+        {/* Content */}
+        <div className="relative z-10">
+          {children}
+        </div>
         <Analytics />
       </body>
     </html>

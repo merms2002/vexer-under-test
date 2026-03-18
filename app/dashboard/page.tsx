@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import { FloatingNavbar } from "@/components/dashboard/floating-navbar"
+import { StealthNavbar } from "@/components/stealth-navbar"
 import { VisionScoreCard } from "@/components/dashboard/vision-score-card"
 import { StatCards } from "@/components/dashboard/stat-cards"
 import { OpeningCards } from "@/components/dashboard/opening-cards"
@@ -21,11 +21,9 @@ export default async function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "Commander"
 
   return (
-    <div className="min-h-screen bg-[#000000] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-      {/* Floating Navbar */}
-      <div className="mb-6 sm:mb-8">
-        <FloatingNavbar />
-      </div>
+    <div className="min-h-screen bg-black px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-4 sm:pb-6">
+      {/* Global Stealth Navbar */}
+      <StealthNavbar />
 
       {/* Header */}
       <div className="mb-6 sm:mb-8">
