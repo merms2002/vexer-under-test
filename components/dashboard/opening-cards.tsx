@@ -22,12 +22,12 @@ export function OpeningCards() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="rounded-3xl bg-zinc-900/40 backdrop-blur-xl border border-white/[0.08] p-4 sm:p-6 h-full flex flex-col overflow-hidden"
+      className="rounded-3xl bg-white/[0.02] border border-white/5 p-4 sm:p-6 h-full flex flex-col overflow-hidden"
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4 sm:mb-6">
         <h3 className="text-white font-semibold text-sm sm:text-base">Opening Repertoire</h3>
-        <button className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20 transition-all">
+        <button className="p-1.5 rounded-lg bg-white/[0.05] border border-white/10 text-white/60 hover:bg-white/[0.08] hover:text-white transition-all">
           <Plus className="w-4 h-4" />
         </button>
       </div>
@@ -43,7 +43,7 @@ export function OpeningCards() {
             className="w-full flex items-center gap-3 p-3 sm:p-4 rounded-lg hover:bg-white/[0.05] transition-all group"
           >
             {/* Folder Icon */}
-            <Folder className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400/60 group-hover:text-emerald-400 flex-shrink-0 transition-colors" />
+            <Folder className="w-4 h-4 sm:w-5 sm:h-5 text-white/60 group-hover:text-white/80 flex-shrink-0 transition-colors" />
 
             {/* Opening Name */}
             <span className="flex-1 text-left text-sm sm:text-base text-white/90 group-hover:text-white transition-colors font-medium">
@@ -51,7 +51,7 @@ export function OpeningCards() {
             </span>
 
             {/* Win Rate */}
-            <span className="text-xs sm:text-sm text-emerald-400/60 font-mono flex-shrink-0">
+            <span className="text-xs sm:text-sm text-white/40 font-mono flex-shrink-0">
               {opening.winRate}
             </span>
 
