@@ -23,7 +23,7 @@ const topNavItems = [
 ]
 
 const bottomNavItems = [
-  { icon: Settings, label: "Settings", href: "#" },
+  { icon: Settings, label: "Settings", href: "/dashboard/settings" },
   { icon: LogOut, label: "Logout", href: "/" },
 ]
 
