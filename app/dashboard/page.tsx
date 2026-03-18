@@ -8,6 +8,7 @@ import { MatchVolumeChart } from "@/components/dashboard/match-volume-chart"
 import { OutcomeSplitChart } from "@/components/dashboard/outcome-split-chart"
 import { NexusDirectives } from "@/components/dashboard/nexus-directives"
 import { RecentClashes } from "@/components/dashboard/recent-clashes"
+import { NexusCoachTerminal } from "@/components/dashboard/nexus-coach-terminal"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -62,12 +63,17 @@ export default async function DashboardPage() {
           <OutcomeSplitChart />
         </div>
 
-        {/* Nexus Directives List */}
-        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
+        {/* Row 3 - NEXUS AI Coach Terminal */}
+        <div className="sm:col-span-2 lg:col-span-8">
+          <NexusCoachTerminal />
+        </div>
+
+        {/* Nexus Directives - Sidebar */}
+        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px]">
           <NexusDirectives />
         </div>
 
-        {/* Row 3 - Full Width */}
+        {/* Row 4 - Full Width */}
         {/* Recent Clashes - Folder Style */}
         <div className="sm:col-span-2 lg:col-span-12">
           <RecentClashes />
