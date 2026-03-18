@@ -1,13 +1,11 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import { FloatingNavbar } from "@/components/dashboard/floating-navbar"
-import { VisionScoreCard } from "@/components/dashboard/vision-score-card"
-import { StatCards } from "@/components/dashboard/stat-cards"
+import { PerformanceChart } from "@/components/dashboard/performance-chart"
+import { EngineFeed } from "@/components/dashboard/engine-feed"
+import { AnalyzeCard } from "@/components/dashboard/analyze-card"
+import { QuickStats } from "@/components/dashboard/quick-stats"
+import { GameHistoryChart } from "@/components/dashboard/game-history-chart"
 import { OpeningCards } from "@/components/dashboard/opening-cards"
-import { MatchVolumeChart } from "@/components/dashboard/match-volume-chart"
-import { OutcomeSplitChart } from "@/components/dashboard/outcome-split-chart"
-import { NexusDirectives } from "@/components/dashboard/nexus-directives"
-import { RecentClashes } from "@/components/dashboard/recent-clashes"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -20,62 +18,69 @@ export default async function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "Commander"
 
   return (
-    <div className="min-h-screen bg-[#000000] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-      {/* Floating Navbar */}
-      <div className="mb-6 sm:mb-8">
-        <FloatingNavbar />
-      </div>
-
+    <div className="min-h-screen px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
       {/* Header */}
-      <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">My Dashboard</h1>
-        <p className="text-white/40 mt-1 text-sm sm:text-base">Welcome back, {displayName}</p>
-      </div>
+      <header className="mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <p className="text-zinc-500 text-sm">Welcome back,</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
+              {displayName}
+            </h1>
+          </div>
+          
+          {/* Search Bar */}
+          <div className="relative max-w-xs w-full">
+            <input
+              type="text"
+              placeholder="Search games..."
+              className="w-full px-4 py-2.5 pl-10 rounded-xl bg-zinc-900/60 backdrop-blur-xl border border-white/[0.08] text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all"
+            />
+            <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+      </header>
 
-      {/* Bento Grid Layout - Fully Responsive */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5">
+      {/* Dashboard Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
         
         {/* Row 1 */}
-        {/* Vision Score - Hero Card */}
-        <div className="sm:col-span-2 lg:col-span-5 min-h-[200px] sm:min-h-[220px]">
-          <VisionScoreCard />
+        {/* Performance Chart - Large */}
+        <div className="lg:col-span-8 min-h-[320px] sm:min-h-[360px]">
+          <PerformanceChart />
         </div>
 
-        {/* Stat Cards - 2 stacked */}
-        <div className="sm:col-span-1 lg:col-span-3 min-h-[200px] sm:min-h-[220px]">
-          <StatCards />
-        </div>
-
-        {/* Opening Cards - Folder Style */}
-        <div className="sm:col-span-1 lg:col-span-4 min-h-[200px] sm:min-h-[220px]">
-          <OpeningCards />
+        {/* Engine Feed - Right Panel */}
+        <div className="lg:col-span-4 min-h-[320px] sm:min-h-[360px]">
+          <EngineFeed />
         </div>
 
         {/* Row 2 */}
-        {/* Match Volume Bar Chart */}
-        <div className="sm:col-span-1 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
-          <MatchVolumeChart />
+        {/* Analyze Card - CTA */}
+        <div className="sm:col-span-1 lg:col-span-3 min-h-[260px]">
+          <AnalyzeCard />
         </div>
 
-        {/* Outcome Split Donut */}
-        <div className="sm:col-span-1 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
-          <OutcomeSplitChart />
+        {/* Quick Stats Grid */}
+        <div className="sm:col-span-1 lg:col-span-3 min-h-[260px]">
+          <QuickStats />
         </div>
 
-        {/* Nexus Directives List */}
-        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
-          <NexusDirectives />
+        {/* Game History Chart */}
+        <div className="lg:col-span-3 min-h-[260px]">
+          <GameHistoryChart />
         </div>
 
-        {/* Row 3 - Full Width */}
-        {/* Recent Clashes - Folder Style */}
-        <div className="sm:col-span-2 lg:col-span-12">
-          <RecentClashes />
+        {/* Opening Repertoire */}
+        <div className="lg:col-span-3 min-h-[260px]">
+          <OpeningCards />
         </div>
       </div>
 
-      {/* Bottom Spacing for scroll */}
-      <div className="h-8 sm:h-12" />
+      {/* Bottom Spacing */}
+      <div className="h-8" />
     </div>
   )
 }
