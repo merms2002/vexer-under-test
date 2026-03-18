@@ -52,33 +52,35 @@ function ToggleSwitch({ defaultChecked = false }: { defaultChecked?: boolean }) 
 
 function SettingRow({ item }: { item: SettingItem }) {
   return (
-    <motion.button
-      whileTap={{ scale: 0.98 }}
-      className="w-full flex items-center justify-between p-4 hover:bg-white/[0.02] transition-colors"
+    <motion.div
+      whileTap={item.hasToggle ? undefined : { scale: 0.98 }}
+      className={`w-full flex items-center justify-between p-4 hover:bg-white/[0.03] active:bg-white/[0.05] transition-colors group ${
+        item.hasToggle ? "" : "cursor-pointer"
+      }`}
     >
       <div className="flex items-center gap-3">
-        <span className="text-zinc-400">{item.icon}</span>
-        <span className="text-white text-sm font-medium tracking-tight">{item.label}</span>
+        <span className="text-zinc-500 group-hover:text-emerald-400 transition-colors">{item.icon}</span>
+        <span className="text-white/90 text-sm font-medium tracking-tight">{item.label}</span>
       </div>
       <div className="flex items-center gap-2">
         {item.value && (
-          <span className="text-zinc-500 text-sm">{item.value}</span>
+          <span className="text-zinc-500 text-sm font-medium">{item.value}</span>
         )}
         {item.hasToggle && <ToggleSwitch defaultChecked={item.defaultToggle} />}
-        {item.hasChevron && <ChevronRight className="w-4 h-4 text-zinc-600" />}
+        {item.hasChevron && <ChevronRight className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400 transition-colors" />}
       </div>
-    </motion.button>
+    </motion.div>
   )
 }
 
 const accountSettings: SettingItem[] = [
   { icon: <User className="w-5 h-5" />, label: "Profile Information", hasChevron: true },
-  { icon: <Link2 className="w-5 h-5" />, label: "Linked Accounts", value: "Chess.com", hasChevron: true },
+  { icon: <Link2 className="w-5 h-5" />, label: "Linked Accounts", value: "Chess.com / Lichess", hasChevron: true },
   { icon: <CreditCard className="w-5 h-5" />, label: "Subscription", hasChevron: true },
 ]
 
 const preferencesSettings: SettingItem[] = [
-  { icon: <Cpu className="w-5 h-5" />, label: "Analysis Depth", value: "Depth 20", hasChevron: true },
+  { icon: <Cpu className="w-5 h-5" />, label: "Analysis Depth (Stockfish)", value: "Depth 20", hasChevron: true },
   { icon: <Palette className="w-5 h-5" />, label: "Theme Preferences", hasChevron: true },
   { icon: <Bell className="w-5 h-5" />, label: "Notifications", hasToggle: true, defaultToggle: true },
   { icon: <Globe className="w-5 h-5" />, label: "Language", value: "English", hasChevron: true },
