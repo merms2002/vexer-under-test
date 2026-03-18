@@ -170,8 +170,8 @@ export function RecentClashes() {
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: gameIndex * 0.05 }}
-                          whileHover={{ x: 4, backgroundColor: "rgba(255,255,255,0.03)" }}
-                          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-all ml-2 sm:ml-4 border-l border-white/10"
+                          whileHover={{ x: 4 }}
+                          className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 sm:p-4 rounded-xl cursor-pointer transition-all ml-2 sm:ml-4 border-l border-white/10 hover:bg-white/[0.03]"
                         >
                           {/* Result Icon */}
                           <div className={`p-2 rounded-lg flex-shrink-0 w-fit ${

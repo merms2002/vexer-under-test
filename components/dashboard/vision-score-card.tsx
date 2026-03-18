@@ -58,9 +58,9 @@ export function VisionScoreCard() {
           </motion.button>
 
           <motion.button 
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-white/[0.05] border border-white/10 text-white/80 rounded-full text-xs sm:text-sm font-medium transition-colors"
+            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-white/[0.05] hover:bg-white/[0.08] border border-white/10 text-white/80 rounded-full text-xs sm:text-sm font-medium transition-colors"
           >
             History
           </motion.button>

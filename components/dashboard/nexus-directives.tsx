@@ -59,8 +59,8 @@ export function NexusDirectives() {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.05 }}
-            whileHover={{ x: 4, backgroundColor: "rgba(255,255,255,0.04)" }}
-            className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-white/[0.02] transition-colors cursor-pointer group"
+            whileHover={{ x: 4 }}
+            className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors cursor-pointer group"
           >
             <div className="p-1.5 sm:p-2 rounded-lg bg-white/[0.05] flex-shrink-0">
               <directive.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white/60" />
