@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import { FloatingNavbar } from "@/components/dashboard/floating-navbar"
+import { StealthNavbar } from "@/components/stealth-navbar"
 import { VisionScoreCard } from "@/components/dashboard/vision-score-card"
 import { StatCards } from "@/components/dashboard/stat-cards"
 import { OpeningCards } from "@/components/dashboard/opening-cards"
@@ -8,6 +8,7 @@ import { MatchVolumeChart } from "@/components/dashboard/match-volume-chart"
 import { OutcomeSplitChart } from "@/components/dashboard/outcome-split-chart"
 import { NexusDirectives } from "@/components/dashboard/nexus-directives"
 import { RecentClashes } from "@/components/dashboard/recent-clashes"
+import { NexusCoachTerminal } from "@/components/dashboard/nexus-coach-terminal"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -20,11 +21,9 @@ export default async function DashboardPage() {
   const displayName = user.user_metadata?.full_name || user.email?.split("@")[0] || "Commander"
 
   return (
-    <div className="min-h-screen bg-[#000000] px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-      {/* Floating Navbar */}
-      <div className="mb-6 sm:mb-8">
-        <FloatingNavbar />
-      </div>
+    <div className="min-h-screen bg-black px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-4 sm:pb-6">
+      {/* Global Stealth Navbar */}
+      <StealthNavbar />
 
       {/* Header */}
       <div className="mb-6 sm:mb-8">
@@ -62,12 +61,17 @@ export default async function DashboardPage() {
           <OutcomeSplitChart />
         </div>
 
-        {/* Nexus Directives List */}
-        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px] sm:min-h-[280px]">
+        {/* Row 3 - NEXUS AI Coach Terminal */}
+        <div className="sm:col-span-2 lg:col-span-8">
+          <NexusCoachTerminal />
+        </div>
+
+        {/* Nexus Directives - Sidebar */}
+        <div className="sm:col-span-2 lg:col-span-4 min-h-[260px]">
           <NexusDirectives />
         </div>
 
-        {/* Row 3 - Full Width */}
+        {/* Row 4 - Full Width */}
         {/* Recent Clashes - Folder Style */}
         <div className="sm:col-span-2 lg:col-span-12">
           <RecentClashes />
